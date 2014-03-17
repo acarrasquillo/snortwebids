@@ -4,7 +4,7 @@ app = Flask(__name__)
 app.debug = True
 
 
-
+# get the client ip and send it to the dashboard
 @app.route('/', methods = ['GET'])
 def index():
 	ip = str(request.remote_addr)
