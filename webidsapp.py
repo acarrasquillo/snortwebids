@@ -2,7 +2,6 @@ from flask import Flask, url_for, render_template, request, jsonify
 
 app = Flask(__name__)
 app.debug = True
-casa = "perro"
 
 
 
