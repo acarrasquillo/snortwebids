@@ -10,3 +10,6 @@ include
 # passwords users
 settings.py
 readme
+
+# python pyc
+*.pyc
