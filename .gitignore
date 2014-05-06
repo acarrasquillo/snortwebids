@@ -13,3 +13,5 @@ readme
 
 # python pyc
 *.pyc
+# swap files
+*.swp
