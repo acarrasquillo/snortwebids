@@ -2,7 +2,6 @@ function GraphView(glabel, gtype, gfilter, gentity, gportlabel, gtolabel, gwidth
 
 //$('#graphbutton').click(function (){
 
-      //alert('entro')
       $.ajax({
 
                        url: '/',
@@ -22,11 +21,20 @@ function GraphView(glabel, gtype, gfilter, gentity, gportlabel, gtolabel, gwidth
                        success: function(res){
                                //location.reload();
                                //
+                               //
                               	var response = res;
 
-				//alert(response);
             			var graphs = response.split("#graph");
+				if (graphs.length <= 1) {
 
+
+					title= "The Ip " + glabel + " is not being monitored\n" 
+                			document.getElementById("content").innerHTML += "<div class='col-md-6 col-md-offset-3'><h1 class='pull-left'>"+title+"</h1></div>";
+
+
+				}
+
+				else {
             			var title = "";
 
 
@@ -54,7 +62,6 @@ function GraphView(glabel, gtype, gfilter, gentity, gportlabel, gtolabel, gwidth
 
                		 	}
 				
-
                 		document.getElementById("content").innerHTML += "<div class='col-md-6 col-md-offset-3'><h1 class='pull-left'>"+title+"</h1></div>";
 
 
@@ -72,7 +79,7 @@ function GraphView(glabel, gtype, gfilter, gentity, gportlabel, gtolabel, gwidth
 
             			document.body.appendChild(src);
                        }
-
+		}
 
                });
 

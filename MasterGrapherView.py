@@ -6,8 +6,13 @@ GRAPH_PATH="/home/labuser/graphs/"
 
 def  printgraphs(graph,type,w,h,divid,filter=None):
 
+   try:
 
-   file=open(graph,'r')
+	   file=open(graph,'r')
+   except IOError:
+
+	 return "ERROR"
+
    graphdata=file.read()
    graphdata=graphdata.replace("data","data%s"%(divid))
    response=""
@@ -89,12 +94,18 @@ def getGraph(type,filter,entity,h, w,portlabel,tolabel,label):
 		response=""	
 		for i in range(len(types)):
 			divid='viz%s'%(i+1)
-			response+='#graph\n\n'+  printgraphs(graph+types[i]+'.js',types[i],w,h,divid,filter)
+
+			graphsresult=printgraphs(graph+types[i]+'.js',types[i],w,h,divid,filter)
+
+			if graphsresult!="ERROR":
+				response+='#graph\n\n'+  graphsresult
 
 	else:
 			graph+=type+'.js'
-		
-			response='#graph\n\n'+  printgraphs(graph,type,w,h,'viz1',filter)
+			graphsresults=printgraphs(graph,type,w,h,'viz1',filter)
+			
+			if graphsresult!="ERROR":
+				response='#graph\n\n'+  graphsresult
 
 
 
